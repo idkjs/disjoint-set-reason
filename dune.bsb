@@ -1,0 +1,85 @@
+;;;;{BSB GENERATED: NO EDIT
+(subdir ./node_modules/@glennsl/bs-jest/src
+(rule
+(targets  jest.ast)
+ (deps (:inputs  jest.ml) )
+(action
+ (run bsc  -w a -bs-no-version-header -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  jest.iast)
+ (deps (:inputs  jest.mli) )
+(action
+ (run bsc  -w a -bs-no-version-header -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  jest.cmi jest.cmti)
+ (deps (:inputs  jest.iast)  (:ast_deps .././src/jest.ast .././src/jest.iast) ../bsconfig.json)
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/disjoint-set-reason/node_modules/@glennsl/bs-jest -cwd ./src %{ast_deps}) (run bsc -I .    -w a -o jest.cmi %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  jest.cmj jest.cmt jest.bs.js)
+ (deps (:inputs  jest.ast)  jest.cmi (:ast_deps .././src/jest.ast .././src/jest.iast) ../bsconfig.json)
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/disjoint-set-reason/node_modules/@glennsl/bs-jest -cwd ./src %{ast_deps}) (run bsc -bs-read-cmi -I .    -w a -bs-package-name @glennsl/bs-jest -bs-package-output commonjs:./src:.bs.js -o jest.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  jest.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+
+
+(subdir ./node_modules/@glennsl/bs-jest(data_only_dirs .melange.eobjs))
+(subdir ./node_modules/@glennsl/bs-jest/.melange.eobjs)
+
+(subdir ./test
+(rule
+(targets  DisjointSetTest.ast)
+ (deps (:inputs  DisjointSetTest.re) )
+(action
+ (run bsc  -w a -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  DisjointSetTest.cmj DisjointSetTest.cmi DisjointSetTest.cmt DisjointSetTest.bs.js)
+ (deps (:inputs  DisjointSetTest.ast)  (:ast_deps .././test/DisjointSetTest.ast ) ../bsconfig.json(alias ../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/disjoint-set-reason -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I . -I ../node_modules/@glennsl/bs-jest/src   -w a -bs-package-name disjoint-set-reason -bs-package-output commonjs:./test:.bs.js -o DisjointSetTest.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  DisjointSetTest.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+(subdir ./src
+(rule
+(targets  DisjointSet.ast)
+ (deps (:inputs  DisjointSet.re) )
+(action
+ (run bsc  -w a -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  DisjointSet.cmj DisjointSet.cmi DisjointSet.cmt DisjointSet.bs.js)
+ (deps (:inputs  DisjointSet.ast)  (:ast_deps .././src/DisjointSet.ast ) ../bsconfig.json(alias ../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/disjoint-set-reason -cwd ./src %{ast_deps}) (run bsc -bs-re-out -I . -I ../test -I ../node_modules/@glennsl/bs-jest/src   -w a -bs-package-name disjoint-set-reason -bs-package-output commonjs:./src:.bs.js -o DisjointSet.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  DisjointSetReason.ast)
+ (deps (:inputs  DisjointSetReason.re) )
+(action
+ (run bsc  -w a -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  DisjointSetReason.cmj DisjointSetReason.cmi DisjointSetReason.cmt DisjointSetReason.bs.js)
+ (deps (:inputs  DisjointSetReason.ast)  (:ast_deps .././src/DisjointSetReason.ast ) ../bsconfig.json(alias ../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/disjoint-set-reason -cwd ./src %{ast_deps}) (run bsc -bs-re-out -I . -I ../test -I ../node_modules/@glennsl/bs-jest/src   -w a -bs-package-name disjoint-set-reason -bs-package-output commonjs:./src:.bs.js -o DisjointSetReason.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  DisjointSetReason.bs.js DisjointSet.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+
+
+(subdir .melange.eobjs)
+
+(data_only_dirs node_modules .melange.eobjs)
+(alias (name bsb_world))
+;;;;BSB GENERATED: NO EDIT}

@@ -1,17 +1,14 @@
 {
   "name": "disjoint-set-reason",
   "bsc-flags": ["-bs-super-errors"],
-  "refmt": 3,
   "version": "0.2.0",
   "sources": [
     {
-      "dir": "src",
-      "subdirs": true
+      "dir": "src"
     },
     {
-      "dir": "__tests__",
-      "subdirs": true,
-      "type": "dev"
+      "dir": "test",
+      "dev":true
     }
   ],
   "package-specs": {
@@ -20,9 +17,8 @@
   },
   "suffix": ".bs.js",
   "namespace": false,
-  "bs-dependencies": [],
+  "bs-dependencies": ["@glennsl/bs-jest"],
   "warnings": {
     "error": "+101"
-  },
-  "bs-dev-dependencies": ["@glennsl/bs-jest"]
+  }
 }

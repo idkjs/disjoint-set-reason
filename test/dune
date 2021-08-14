@@ -1,0 +1,9 @@
+(executable
+ (name DisjointSetTest)
+ (libraries DisjointSet))
+
+(rule
+ (alias runtest)
+ (deps DisjointSetTest.bs.js)
+ (action
+  (run node ./DisjointSetTest.bs.js)))

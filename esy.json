@@ -2,28 +2,44 @@
   "name": "disjoint-set-reason",
   "version": "0.2.0",
   "scripts": {
-    "release-opam": "./scripts/release.sh"
+    "release-opam": "./scripts/release.sh",
+    "test-js": "esy b dune build @runtest -w"
   },
   "esy": {
-    "build": "dune build -p #{self.name}",
+    "build": [
+      "dune build -p #{self.name}",
+      "ln -sfn #{melange.install} node_modules/bs-platform"
+    ],
     "buildDev": "refmterr dune build --root . --only-package #{self.name}",
-    "buildsInSource": true
+    "buildsInSource": "_build"
   },
   "dependencies": {
     "@opam/dune": ">= 2.0",
-    "@opam/reason": "*",
-    "ocaml": ">= 4.6.0"
+    "@opam/reason": ">= 3.6.0 < 4.0.0",
+    "ocaml": "4.12.x"
   },
   "devDependencies": {
     "@opam/dune-release": "*",
     "@opam/merlin": "*",
-    "refmterr": "*"
+    "melange": "melange-re/melange",
+    "refmterr": "*",
+    "@opam/ocaml-lsp-server": "*"
   },
-  "keywords": ["reasonml", "algorithms", "data-structures"],
+  "resolutions": {
+    "refmterr": "jfrolich/reason-native:refmterr.json#08085a4048974b06aaf3aab918b677b39dea3d18"
+  },
+  "keywords": [
+    "reasonml",
+    "algorithms",
+    "data-structures"
+  ],
   "author": "Dylan Irlbeck",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dylanirlbeck/disjoint-set-reason.git"
+  },
+  "installConfig": {
+    "pnp": false
   }
 }

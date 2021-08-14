@@ -3,10 +3,16 @@
   "description": "A Disjoint Set implementation in Reason",
   "version": "0.2.0",
   "scripts": {
-    "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
-    "test": "npm run build && jest"
+    "build": "esy bsb -make-world",
+    "esy:clean": "rescript clean",
+    "test": "jest",
+    "build:watch": "rescript build -w"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/test/*Test.bs.js",
+      "<rootDir>/test/*Test.js"
+    ]
   },
   "keywords": [
     "reasonml",
@@ -20,8 +26,9 @@
     "url": "git+https://github.com/dylanirlbeck/disjoint-set-reason.git"
   },
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.5.0",
-    "bs-platform": "^7.2.2"
+    "@glennsl/bs-jest": "^0.7.0",
+    "esy": "*",
+    "rescript": "^9.1.4"
   },
   "peerDependencies": {}
 }

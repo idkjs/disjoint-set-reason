@@ -1,5 +1,4 @@
 (library
  (name DisjointSet)
  (wrapped false)
- (public_name disjoint-set-reason)
- )
+ (public_name disjoint-set-reason))
